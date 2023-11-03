@@ -94,5 +94,6 @@ common shared
   default-language:   Haskell2010
 
 executable jit-experiments
-  import:  shared
-  main-is: Main.hs
+  import:      shared
+  main-is:     Main.hs
+  ghc-options: -g -rtsopts

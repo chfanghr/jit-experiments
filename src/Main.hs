@@ -229,14 +229,13 @@ unsafeGetFunction ptr =
 
 main :: IO ()
 main = do
-  let jitSize = 256 * 1024
-  ptr <- allocate jitSize
-  mach <- case assemble arithDemo of
+  st <- case assemble arithDemo of
     Left err -> do
       putStrLn $ "fail to assemble: " <> err
       throwIO $ ExitFailure 1
-    Right s -> pure $ s ^. #mach
-  fn <- jit ptr mach
+    Right s -> pure s
+  ptr <- allocate $ fromIntegral $ st ^. #memOff
+  fn <- jit ptr $ st ^. #mach
   res <- fn
   print res
   where

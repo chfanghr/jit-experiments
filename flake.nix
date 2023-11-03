@@ -49,6 +49,7 @@
           # Development shell configuration
           devShell = {
             hlsCheck.enable = false;
+            extraLibraries = hp: { inherit (hp) haskell-debug-adapter ghci-dap; };
           };
 
           # What should haskell-flake add to flake outputs?
