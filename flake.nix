@@ -1,5 +1,5 @@
 {
-  description = "srid/haskell-template: Nix template for Haskell projects";
+  description = "srid/jit-experiments: Nix template for Haskell projects";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     systems.url = "github:nix-systems/default";
@@ -37,7 +37,7 @@
           # Add your package overrides here
           settings = {
             /*
-            haskell-template = {
+            jit-experiments = {
               haddock = false;
             };
             aeson = {
@@ -76,12 +76,12 @@
         };
 
         # Default package & app.
-        packages.default = self'.packages.haskell-template;
-        apps.default = self'.apps.haskell-template;
+        packages.default = self'.packages.jit-experiments;
+        apps.default = self'.apps.jit-experiments;
 
         # Default shell.
         devShells.default = pkgs.mkShell {
-          name = "haskell-template";
+          name = "jit-experiments";
           meta.description = "Haskell development environment";
           # See https://zero-to-flakes.com/haskell-flake/devshell#composing-devshells
           inputsFrom = [
