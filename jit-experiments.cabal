@@ -2,11 +2,6 @@ cabal-version:      2.4
 name:               jit-experiments
 version:            0.1.0.0
 license:            MIT
-copyright:          2022 Sridhar Ratnakumar
-maintainer:         srid@srid.ca
-author:             Sridhar Ratnakumar
-category:           Web
-homepage:           https://srid.ca/jit-experiments
 
 -- TODO: Before hackage release.
 -- A short (one-line) description of the package.
@@ -34,6 +29,7 @@ common shared
     relude
 
   default-extensions:
+    NoFieldSelectors
     NoStarIsType
     BangPatterns
     ConstraintKinds
@@ -61,6 +57,7 @@ common shared
     MultiParamTypeClasses
     MultiWayIf
     NumericUnderscores
+    OverloadedLabels
     OverloadedStrings
     PolyKinds
     PostfixOperators
@@ -77,16 +74,20 @@ common shared
   build-depends:
     , aeson
     , async
-    , base          >=4.13.0.0 && <4.18.0.0.0
+    , base           >=4.13.0.0 && <4.18.0.0.0
+    , binary
     , data-default
     , directory
     , filepath
     , mtl
+    , optics
     , optics-core
     , profunctors
-    , relude        >=1.0
+    , relude         >=1.0
+    , shared-memory
     , shower
     , time
+    , unix
     , with-utf8
 
   hs-source-dirs:     src
